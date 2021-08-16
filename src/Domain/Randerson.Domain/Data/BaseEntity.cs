@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Randerson.Domain.Data
+﻿namespace Randerson.Domain.Data
 {
     public abstract class BaseEntity<TId>
     {

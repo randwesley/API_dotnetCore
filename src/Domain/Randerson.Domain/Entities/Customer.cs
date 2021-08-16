@@ -1,9 +1,6 @@
 ﻿using MongoDB.Bson;
 using MongoDB.Bson.Serialization.Attributes;
 using Randerson.Domain.Data;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace Randerson.Domain.Entities
 {

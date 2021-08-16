@@ -1,9 +1,7 @@
-﻿using Randerson.Domain.Repositories;
-using Randerson.Infrastructure.MongoDb;
-using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Text;
+using Randerson.Domain.Repositories;
+using Randerson.Infrastructure.MongoDb;
 
 namespace Randerson.Infrastructure.Repositories
 {

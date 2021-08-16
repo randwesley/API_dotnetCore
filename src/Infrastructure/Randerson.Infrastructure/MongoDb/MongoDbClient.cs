@@ -1,11 +1,10 @@
-﻿using MongoDB.Bson;
-using MongoDB.Driver;
-using Randerson.Domain.Data;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
-using System.Text;
+using MongoDB.Bson;
+using MongoDB.Driver;
+using Randerson.Domain.Data;
 
 namespace Randerson.Infrastructure.MongoDb
 {

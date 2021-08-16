@@ -4,9 +4,6 @@ using MongoDB.Bson.Serialization;
 using Randerson.Domain.Entities;
 using Randerson.Domain.Repositories;
 using Randerson.Infrastructure.Repositories;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace Randerson.CrossCutting.DependencyInjection
 {
@@ -16,7 +13,7 @@ namespace Randerson.CrossCutting.DependencyInjection
         {
             services.AddMongoClient<Customer, string>(configuration);
             BsonClassMap.RegisterClassMap<Customer>(cm => cm.AutoMap());
-            services.AddTransient<ICustomerReadRepository,  CustomerReadRepository>();
+            services.AddTransient<ICustomerReadRepository, CustomerReadRepository>();
             return services;
         }
     }

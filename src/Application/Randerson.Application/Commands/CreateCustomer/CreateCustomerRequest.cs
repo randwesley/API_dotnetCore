@@ -1,7 +1,4 @@
 ﻿using MediatR;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace Randerson.Application.Commands.CreateCustomer
 {
@@ -9,5 +6,11 @@ namespace Randerson.Application.Commands.CreateCustomer
     {
         public string Name { get; set; }
         public string Email { get; set; }
+
+        public CreateCustomerRequest(string name, string email)
+        {
+            Name = name;
+            Email = email;
+        }
     }
 }

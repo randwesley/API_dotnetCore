@@ -1,11 +1,10 @@
-﻿using MediatR;
+﻿using System.Threading;
+using System.Threading.Tasks;
+using MediatR;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Randerson.Application.Commands.CreateCustomer;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using Randerson.Domain.Entities;
 
 namespace Randerson.Api.Controllers
 {
@@ -21,12 +20,20 @@ namespace Randerson.Api.Controllers
             Mediator = mediator;
         }
 
-        [HttpPost]
+        [HttpGet("{name}/{email}")]
         [ProducesResponseType(typeof(CreateCustomerResponse), StatusCodes.Status200OK)]
-        public async Task<ActionResult> PostCustomer([FromBody] CreateCustomerRequest request)
+        public async Task<ActionResult> PostCustomer([FromRoute] string name, string email, CancellationToken cancellation)
         {
+            var request = new CreateCustomerRequest(name, email);
             var response = await Mediator.Send(request);
             return Ok(response);
+        }
+        [HttpPost]
+        public async Task<ActionResult<Customer>> InsertCustomer([FromBody]  Customer customer, CancellationToken cancellation)
+        {
+            await Mediator.Send(customer);
+
+            return CreatedAtRoute("GetCustomer", new { id = customer.Id.ToString() }, customer);
         }
     }
 }

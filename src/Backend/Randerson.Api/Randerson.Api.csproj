@@ -6,10 +6,14 @@
 
   <ItemGroup>
     <PackageReference Include="MediatR" Version="9.0.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.Versioning.ApiExplorer" Version="5.0.0" />
+    <PackageReference Include="Swashbuckle.AspNetCore.SwaggerGen" Version="6.1.5" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\..\Application\Randerson.Application\Randerson.Application.csproj" />
+    <ProjectReference Include="..\..\CrossCutting\Randerson.CrossCutting\Randerson.CrossCutting.csproj" />
+    <ProjectReference Include="..\..\Infrastructure\Randerson.Infrastructure\Randerson.Infrastructure.csproj" />
   </ItemGroup>
 
 </Project>

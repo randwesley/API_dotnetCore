@@ -1,10 +1,8 @@
-﻿using Microsoft.Extensions.Configuration;
+﻿using System;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Randerson.Domain.Data;
 using Randerson.Infrastructure.MongoDb;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace Randerson.CrossCutting.DependencyInjection
 {

@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Randerson.Infrastructure.MongoDb
+﻿namespace Randerson.Infrastructure.MongoDb
 {
     public class MongoConfig
     {
