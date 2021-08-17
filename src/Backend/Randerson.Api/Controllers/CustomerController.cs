@@ -1,6 +1,7 @@
 ﻿using System.Threading;
 using System.Threading.Tasks;
 using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Randerson.Application.Commands.CreateCustomer;
@@ -20,20 +21,33 @@ namespace Randerson.Api.Controllers
             Mediator = mediator;
         }
 
-        [HttpGet("{name}/{email}")]
+        //[HttpGet("{name}/{email}")]
+        //[ProducesResponseType(typeof(CreateCustomerResponse), StatusCodes.Status200OK)]
+        //public async Task<ActionResult> FindCustomer([FromRoute] string name, string email, CancellationToken cancellation)
+        //{
+        //  var request = new FindCustomerRequest(name, email);
+        //  var response = await Mediator.Send(request);
+        //  return Ok(response);
+        //}
+
+        [HttpPost]
+        [AllowAnonymous]
         [ProducesResponseType(typeof(CreateCustomerResponse), StatusCodes.Status200OK)]
-        public async Task<ActionResult> PostCustomer([FromRoute] string name, string email, CancellationToken cancellation)
+        [ProducesResponseType(StatusCodes.Status422UnprocessableEntity)]
+        public async Task<ActionResult> SaveCustomer([FromBody]  CreateCustomerRequest request, CancellationToken cancellation)
         {
-            var request = new CreateCustomerRequest(name, email);
-            var response = await Mediator.Send(request);
+            var response = await Mediator.Send(request, cancellation);
             return Ok(response);
         }
-        [HttpPost]
-        public async Task<ActionResult<Customer>> InsertCustomer([FromBody]  Customer customer, CancellationToken cancellation)
-        {
-            await Mediator.Send(customer);
 
-            return CreatedAtRoute("GetCustomer", new { id = customer.Id.ToString() }, customer);
-        }
+       // [HttpPut("update")]
+       // [AllowAnonymous]
+       // [ProducesResponseType(typeof(CreateCustomerResponse), StatusCodes.Status200OK)]
+       // [ProducesResponseType(StatusCodes.Status422UnprocessableEntity)]
+       // public async Task<ActionResult> UpdateMenu([FromBody] UpdateCustomerRequest request, CancellationToken cancellation)
+       // {
+       //     var response = await Mediator.Send(request, cancellation);
+       //     return Ok(response);
+       // }
     }
 }
