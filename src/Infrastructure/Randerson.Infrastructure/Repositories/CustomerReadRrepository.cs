@@ -1,5 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using MongoDB.Bson;
+using Randerson.Domain.Entities;
 using Randerson.Domain.Repositories;
 using Randerson.Infrastructure.MongoDb;
 
@@ -17,13 +19,21 @@ namespace Randerson.Infrastructure.Repositories
 
         public Domain.Entities.Customer Find(string id)
         {
-            return Client.Find(client => client.Id == id);
+            var _id = new ObjectId(id);
+            Customer customer = Client.Find(client => client.Id == id);
+            return customer;
+        }
+
+        public Domain.Entities.Customer Find(string name, string email)
+        {
+            Customer customer = Client.Find(x => x.Name == name && x.Email == email);
+            return customer;
         }
 
         public List<Domain.Entities.Customer> get() =>
-            Client.FindAll(client => true).ToList();
+        Client.FindAll(client => true).ToList();
 
-        public Domain.Entities.Customer Insert(Domain.Entities.Customer user)
+        public Domain.Entities.Customer InsertOne(Domain.Entities.Customer user)
         {
             Client.InsertOne(user);
             return user;

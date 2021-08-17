@@ -1,12 +1,20 @@
-﻿using System;
+﻿using Randerson.Application.Commands.CustomerGeneric;
+using Randerson.Domain.Entities;
+using System;
 
 namespace Randerson.Application.Commands.CreateCustomer
 {
     public class CreateCustomerResponse
     {
-        public Guid Id { get; set; }
-        public string Name { get; set; }
-        public string Email { get; set; }
-        public DateTime Date { get; set; }
+        public CustomerResponse Customer { get; set; }
+
+        public CreateCustomerResponse(Customer customer)
+        {
+            Customer = new CustomerResponse()
+            {
+                Name = customer.Name,
+                Email = customer.Email
+            };
+        }
     }
 }

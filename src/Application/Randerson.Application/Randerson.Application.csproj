@@ -6,11 +6,18 @@
 
   <ItemGroup>
     <PackageReference Include="MediatR" Version="9.0.0" />
+    <PackageReference Include="RavenDB.Client" Version="5.2.2" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\..\Domain\Randerson.Domain\Randerson.Domain.csproj" />
     <ProjectReference Include="..\..\Infrastructure\Randerson.Infrastructure\Randerson.Infrastructure.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Commands\FindCustomer\" />
+    <Folder Include="Commands\UpdateCustomer\" />
+    <Folder Include="Commands\RemoveCustomer\" />
   </ItemGroup>
 
 </Project>
